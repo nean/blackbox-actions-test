@@ -1,0 +1,28 @@
+name: 'Blackbox GitHub Actions'
+on:
+  - push
+jobs:
+  blackbox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: postdeploy
+        uses: nean/blackbox-github-actions@master
+        with:
+          bb_actions_subcommand: 'postdeploy'
+        env:
+          BLACKBOX_PUBKEY: ${{ secrets.BLACKBOX_PUBKEY }}
+          BLACKBOX_PRIVKEY: ${{ secrets.BLACKBOX_PRIVKEY }}
+
+      - name: execute
+        run: |
+          cat super_secret.txt
+
+      - name: shred
+        uses: nean/blackbox-github-actions@master
+        with:
+          bb_actions_subcommand: 'shred_all_files'
+        env:
+          BLACKBOX_PUBKEY: ${{ secrets.BLACKBOX_PUBKEY }}
+          BLACKBOX_PRIVKEY: ${{ secrets.BLACKBOX_PRIVKEY }}
