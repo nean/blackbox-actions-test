@@ -7,6 +7,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: execute ls
+        run: |
+          ls
+
       - name: postdeploy
         uses: nean/blackbox-github-actions@master
         with:
