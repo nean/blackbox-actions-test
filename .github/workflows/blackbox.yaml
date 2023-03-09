@@ -21,7 +21,7 @@ jobs:
 
       - name: execute
         run: |
-          cat super_secret.txt
+          cat test-1/hello.txt
 
       - name: shred
         uses: nean/blackbox-github-actions@master
