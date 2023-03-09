@@ -5,3 +5,4 @@ public.pgp
 /.blackbox/pubring.kbx~
 /.blackbox/secring.gpg
 /super_secret.txt
+/test-1/hello.txt
